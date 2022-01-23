@@ -1,1 +1,7 @@
-**/__pycache__/**
+dist/
+*.egg-info/
+*.egg
+*.pyc
+*.pyo
+PKG-INFO
+*~
