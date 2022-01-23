@@ -7,33 +7,75 @@ this is the core functionality, a library/API used by the WiFiQR WebApp.
 <br>
 <br>
 
-# Example
+# Usage
+
+1. install the lib:
+
+   ```bash
+   pip install Pillow
+   pip install qrcode
+   pip install wifiqr-core
+   ```
+
+2. Varouise ways to use:
+    - Import as a lib or an API:
+      ```python
+      from wifi_qr import wifi_2_qr
+
+      # 🛠 Initialize the class
+      wq = wifi_2_qr() 
+      ``` 
+    - CLI tool:
+      ```shell
+      $ pytho wifi_qr. 
+      ⚠️ As a MacOS user, you gotta fill in manually...
+      ✍️ WiFi Name: ******
+      🙈 Hidden Network (yes/no): no
+      🔐 WiFi Password (leave empty if none): **********
+      🎨 Output/image name: qr
+      ```
+
+## Example
 
 Install and use on your own projects.
 
 > Following exmaple shows how to creat an `img.png` containing a QR-Code with your WiFi creditionals.
 
-1. install the lib:
+```python
+from wifi_qr import wifi_2_qr
 
-   ```bash
-   pip install qrcode
-   pip install wifiqr-core
-   ```
+# change this to the desired output image name.
+img_name = "QR_CODE"
 
-2. import the lib:
+ssid = "your_wifi_name"
+password = "your_wifi_pass"
 
-   ```python
-   import wifi_qr as wq
+# 🛠 Initialize the class
+wq = wifi_2_qr()
 
-   # change this to the desired output image name.
-   my_img = "QR_CODE"
+# 🔐 Get WiFi credentials
+try:
+    my_wifi_info = wq.get_wifi()
+    print(my_wifi_info)
+except TypeError:
+    "Incase using MacOS, must set the wifi manually"
+    my_wifi_info = wq.set_wifi(
+        ssid=ssid, password=password, auth_type='WPA2', hidden="false")
+except:
+    print("Something wrong accored..!")
 
-   wifi_info = wq.get_wifi()
-   qr_img = wq.get_qr(wifi_info)
 
-   # Save the qrcode as .png img in local dir
-   qr_img.save(my_img + " .png")
-   ```
+# 🎨 Build the QR-Code
+qr_img = wq.get_qr(my_wifi_info)
+print(qr_img)
+
+
+# 💾 Save the qrcode as .png img in local dir
+wq.save_qr(qr_img, img_name)
+
+# or you can:
+# qr_img.save(img_name + " .png")
+```
 
 <br>
 <br>
@@ -46,8 +88,10 @@ If you would like to develop the project...
 
 ### you need
 
-- python 3
-- pipenv `pip install --user pipenv`. 
+- python 3 & pip.
+- pipenv `pip install --user pipenv`.
+- qrcode `pip install qrcode`.
+- Pillow `pip install Pillow`.
 
 ### Start developing
 
@@ -63,6 +107,7 @@ If you would like to develop the project...
   ```shell
   pipenv install
   ```
+
     > If you don't have pipenv (high recommend you do), A requirments.txt file is provided use:
         `pip install -r requirments.txt` instead.
 
@@ -75,7 +120,7 @@ If you would like to develop the project...
 
 2. Generte a QR-code from WiFi creds.
 
-### Extras:
+### Extras
 
 - Create a Web-UI:
   - Show generated QR-code.
