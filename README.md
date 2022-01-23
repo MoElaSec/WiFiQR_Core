@@ -12,8 +12,6 @@ this is the core functionality, a library/API used by the WiFiQR WebApp.
 1. install the lib:
 
    ```bash
-   pip install Pillow
-   pip install qrcode
    pip install wifiqr-core
    ```
 
@@ -92,9 +90,9 @@ If you would like to develop the project...
 ### you need
 
 - python 3 & pip.
-- pipenv `pip install --user pipenv`.
-- qrcode `pip install qrcode`.
-- Pillow `pip install Pillow`.
+- pipenv.
+- qrcode.
+- Pillow.
 
 ### Start developing
 
