@@ -67,6 +67,7 @@ If you would like to develop the project...
         `pip install -r requirments.txt` instead.
 
 <br>
+<br>
 
 ## 🧐 How it works
 
@@ -74,12 +75,14 @@ If you would like to develop the project...
 
 2. Generte a QR-code from WiFi creds.
 
-### Extras
+### Extras:
 
 - Create a Web-UI:
   - Show generated QR-code.
   - Copy+Print button for QR-code.
 - Create a Desktop-UI.
+
+<br>
 
 ## 🛠 Tools
 
