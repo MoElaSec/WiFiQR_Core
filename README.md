@@ -51,7 +51,7 @@ If you would like to develop the project...
 
 ### Start developing
 
-- clone the repo:
+- clone the repo (or better fork it):
 
   ```shell
   git clone https://github.com/MoElaSec/WiFiQR_Core
