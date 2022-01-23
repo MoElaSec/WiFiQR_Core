@@ -213,7 +213,7 @@ setup(
 
     entry_points={
         'console_scripts': [
-            'wifiqr-core=wifi_qr:main',
+            'wifiqr-core=wifi_qr.__main__:main',
         ]
     },
 
