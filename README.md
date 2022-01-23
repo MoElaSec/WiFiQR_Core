@@ -18,22 +18,25 @@ this is the core functionality, a library/API used by the WiFiQR WebApp.
    ```
 
 2. Varouise ways to use:
-    - Import as a lib or an API:
-      ```python
-      from wifi_qr import wifi_2_qr
 
-      # 🛠 Initialize the class
-      wq = wifi_2_qr() 
-      ``` 
-    - CLI tool:
-      ```shell
-      $ pytho wifi_qr. 
-      ⚠️ As a MacOS user, you gotta fill in manually...
-      ✍️ WiFi Name: ******
-      🙈 Hidden Network (yes/no): no
-      🔐 WiFi Password (leave empty if none): **********
-      🎨 Output/image name: qr
-      ```
+   - Import as a lib or an API:
+
+     ```python
+     from wifi_qr import wifi_2_qr
+
+     # 🛠 Initialize the class
+     wq = wifi_2_qr()
+     ```
+
+   - CLI tool:
+     ```shell
+     $ pytho wifi_qr.
+     ⚠️ As a MacOS user, you gotta fill in manually...
+     ✍️ WiFi Name: ******
+     🙈 Hidden Network (yes/no): no
+     🔐 WiFi Password (leave empty if none): **********
+     🎨 Output/image name: qr
+     ```
 
 ## Example
 
@@ -108,7 +111,8 @@ If you would like to develop the project...
   pipenv install
   ```
 
-    > If you don't have pipenv (high recommend you do), A requirments.txt file is provided use:
+  > If you don't have pipenv (high recommend you do), A requirments.txt file is provided use:
+
         `pip install -r requirments.txt` instead.
 
 <br>
