@@ -47,7 +47,7 @@ If you would like to develop the project...
 ### you need
 
 - python 3
-- pipenv `pip install --user pipenv`
+- pipenv `pip install --user pipenv`. 
 
 ### Start developing
 
@@ -63,6 +63,8 @@ If you would like to develop the project...
   ```shell
   pipenv install
   ```
+    > If you don't have pipenv (high recommend you do), A requirments.txt file is provided use:
+        `pip install -r requirments.txt` instead.
 
 <br>
 
