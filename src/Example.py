@@ -1,4 +1,4 @@
-from wifi_qr import wifi_2_qr
+from wifiqr_core import wifi_2_qr
 
 # change this to the desired output image name.
 img_name = "QR_CODE"

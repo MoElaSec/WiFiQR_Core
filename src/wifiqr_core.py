@@ -1,7 +1,7 @@
 import qrcode
 import subprocess
 from typing import Union
-import keychain as kchain
+# import keychain as kchain
 
 
 class wifi_2_qr():
@@ -111,7 +111,7 @@ class wifi_2_qr():
         if os == "Darwin":
             raise TypeError(
                 "⚠️ MacOS users can only use the manual way... set_wifi()")
-        elif os == "Window":
+        elif os == "Windows":
             wifi_creds = self.win_wifi()
         else:
             return "❌ Error with checking the OS"
