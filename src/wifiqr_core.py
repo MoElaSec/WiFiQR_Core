@@ -1,7 +1,7 @@
 import qrcode
 import subprocess
 from typing import Union
-import keychain as kchain
+# import keychain as kchain
 
 
 class wifi_2_qr():
