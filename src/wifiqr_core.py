@@ -1,7 +1,7 @@
 import qrcode
 import subprocess
 from typing import Union
-# import keychain as kchain
+import keychain as kchain
 
 
 class wifi_2_qr():
@@ -23,7 +23,7 @@ class wifi_2_qr():
         hidden = 'true' if hidden else 'false'
 
         # return ssid, password
-        if auth_type in ('WPA3', 'WPA2', 'WPA', 'WEP'):
+        if auth_type.upper() in ('WPA3', 'WPA2', 'WPA', 'WEP'):
             if password is None:
                 raise TypeError(
                     'For WPA3, WPA2, WPA and WEP, password should not be None.')
@@ -37,7 +37,7 @@ class wifi_2_qr():
         raise ValueError(f'Unknown authentication_type: {auth_type}')
 
     @ staticmethod
-    def win_wifi()-> Union[bool, str]:
+    def win_wifi() -> Union[bool, str]:
         try:
             # traverse the profile
             Id = subprocess.check_output(
@@ -53,7 +53,8 @@ class wifi_2_qr():
             password = str([b.split(":")[1][1:-1]
                             for b in password_check if "Key Content" in b])[2:-2]
 
-            auth_type =  "".join([b.split(":")[1][1:-1]for b in Id if "Authentication" in b])[:4]
+            auth_type = "".join([b.split(":")[1][1:-1]
+                                for b in Id if "Authentication" in b])[:4]
 
             # print("User name :", ssid)
 
@@ -76,26 +77,21 @@ class wifi_2_qr():
             Id = subprocess.check_output(
                 [s1, s2, s3, s4, s5]).decode('utf-8').split('\n')
 
-            ssid = str([b.split(":")[1][1:-1] for b in Id if "SSID" in b][1])
+            ssid = str([b.split(":")[1][1:] for b in Id if "SSID" in b][1])
 
             # Doesn't work due to keychains
-            # pass_cmd = f"security find-generic-password -wa {ssid}"
-            # p1 = pass_cmd.split(" ")[0]
-            # p2 = pass_cmd.split(" ")[1]
-            # p3 = pass_cmd.split(" ")[2]
-            # p4 = pass_cmd.split(" ")[3]
+            pass_cmd = f"security find-generic-password -wa {ssid}"
+            p_1 = pass_cmd.split(" ")[0]
+            p_2 = pass_cmd.split(" ")[1]
+            p_3 = pass_cmd.split(" ")[2]
+            p_4 = pass_cmd.split(" ")[3]
 
-            # p_Id = subprocess.check_output(
-            #     [p1, p2, p3, p4]).decode('utf-8').split('\n')
-
-            # password = str(p_Id[0])
-
-            password = kchain.getpassword(ssid)
+            password = subprocess.check_output([p_1, p_2, p_3, p_4]).decode('utf-8').split('\n')
 
             auth_type = str([b.split(":")[1][1:-1]
                             for b in Id if "link auth" in b][0])[:3]
 
-            return wifi_2_qr.set_wifi(ssid, password, auth_type[:3], hidden)
+            return wifi_2_qr.set_wifi(ssid, password, auth_type.upper())
         except:
             return False
 
@@ -134,8 +130,19 @@ def main():
 
     try:
         if os == "Darwin":
-            raise TypeError(
-                "⚠️ MacOS users can only use the manual way... set_wifi()")
+            # print("⚠️  As a MacOS user, you gotta fill in manually...")
+
+            # raise TypeError(
+            #     "⚠️ MacOS users can only use the manual way... set_wifi()")
+            img_name = input("🎨 Output/image name: ")
+
+            wifi_creds = qw.mac_wifi()
+
+            # 🎨 Build the QR-Code
+            qr_img = qw.get_qr(wifi_creds)
+
+            # 💾 Save the qrcode as .png img in local dir
+            qw.save_qr(qr_img, img_name)
         elif os == "Window":
             img_name = input("🎨 Output/image name: ")
 
@@ -147,10 +154,10 @@ def main():
             # 💾 Save the qrcode as .png img in local dir
             qw.save_qr(qr_img, img_name)
         else:
-            return "❌ Error with checking the OS"
-    except TypeError:
-        print("⚠️  As a MacOS user, you gotta fill in manually...")
+            print("❌ Error with checking the OS, try manually entering WiFi info...")
 
+            raise TypeError("❌ Error with checking the OS")
+    except TypeError:
         ssid = input("✍️ WiFi Name: ")
 
         adv = input("🙈 Hidden Network (yes/no): ")
