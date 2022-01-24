@@ -53,8 +53,7 @@ class wifi_2_qr():
             password = str([b.split(":")[1][1:-1]
                             for b in password_check if "Key Content" in b])[2:-2]
 
-            auth_type = str([b.split(":")[1][1:-1]
-                             for b in Id if "Authentication" in b])[2:-10]
+            auth_type =  "".join([b.split(":")[1][1:-1]for b in Id if "Authentication" in b])[:4]
 
             # print("User name :", ssid)
 
