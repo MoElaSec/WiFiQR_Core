@@ -137,7 +137,15 @@ def main():
             raise TypeError(
                 "⚠️ MacOS users can only use the manual way... set_wifi()")
         elif os == "Window":
+            img_name = input("🎨 Output/image name: ")
+
             wifi_creds = qw.win_wifi()
+
+            # 🎨 Build the QR-Code
+            qr_img = qw.get_qr(wifi_creds)
+
+            # 💾 Save the qrcode as .png img in local dir
+            qw.save_qr(qr_img, img_name)
         else:
             return "❌ Error with checking the OS"
     except TypeError:
