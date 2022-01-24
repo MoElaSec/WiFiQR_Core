@@ -20,7 +20,7 @@ this is the core functionality, a library/API used by the WiFiQR WebApp.
    - Import as a lib or an API:
 
      ```python
-     from wifi_qr import wifi_2_qr
+     from wifiqr_core import wifi_2_qr
 
      # 🛠 Initialize the class
      wq = wifi_2_qr()
@@ -28,7 +28,7 @@ this is the core functionality, a library/API used by the WiFiQR WebApp.
 
    - CLI tool:
      ```shell
-     $ pytho wifi_qr.
+     $ wifiqr-core
      ⚠️ As a MacOS user, you gotta fill in manually...
      ✍️ WiFi Name: ******
      🙈 Hidden Network (yes/no): no
@@ -43,7 +43,7 @@ Install and use on your own projects.
 > Following exmaple shows how to creat an `img.png` containing a QR-Code with your WiFi creditionals.
 
 ```python
-from wifi_qr import wifi_2_qr
+from wifiqr_core import wifi_2_qr
 
 # change this to the desired output image name.
 img_name = "QR_CODE"
