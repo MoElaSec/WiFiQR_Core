@@ -169,7 +169,7 @@ def read_description():
 setup(
     name='wifiqr-core',
 
-    version='1.0',
+    version='1.1.0',
 
     description='An API to generate a QR-code for your WiFI to let others quickly connect.',
     long_description=read_description(),
