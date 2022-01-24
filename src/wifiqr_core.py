@@ -37,7 +37,7 @@ class wifi_2_qr():
         raise ValueError(f'Unknown authentication_type: {auth_type}')
 
     @ staticmethod
-    def win_wifi() -> str:
+    def win_wifi()-> Union[bool, str]:
         try:
             # traverse the profile
             Id = subprocess.check_output(
@@ -59,12 +59,12 @@ class wifi_2_qr():
 
             # print("Password :", password)
 
-            return set_wifi(ssid, password, auth_type[:3])
+            return wifi_2_qr.set_wifi(ssid, password, auth_type)
         except:
             return False
 
     @ staticmethod
-    def mac_wifi() -> str:
+    def mac_wifi() -> Union[bool, str]:
         try:
             cmd = '/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | grep "SSID"'
             s1 = cmd.split(" ")[0]
@@ -95,7 +95,7 @@ class wifi_2_qr():
             auth_type = str([b.split(":")[1][1:-1]
                             for b in Id if "link auth" in b][0])[:3]
 
-            return set_wifi(ssid, password, auth_type[:3], hidden)
+            return wifi_2_qr.set_wifi(ssid, password, auth_type[:3], hidden)
         except:
             return False
 
