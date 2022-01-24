@@ -48,7 +48,7 @@ class wifi_2_qr():
 
             # traverse the password
             password_check = subprocess.check_output(
-                ['netsh', 'wlan', 'show', 'profiles', id_results, 'key=clear']).decode('utf-8').split('\n')
+                ['netsh', 'wlan', 'show', 'profiles', ssid, 'key=clear']).decode('utf-8').split('\n')
 
             password = str([b.split(":")[1][1:-1]
                             for b in password_check if "Key Content" in b])[2:-2]
