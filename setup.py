@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Setup module."""
 try:
-    from setuptools import setup
+    from setuptools import setup, find_packages
 except ImportError:
     from distutils.core import setup
 
@@ -29,7 +29,7 @@ this is the core functionality, a library/API used by the WiFiQR WebApp.
    - Import as a lib or an API:
 
      ```python
-     from wifi_qr import wifi_2_qr
+     from wifiqr_core import wifi_2_qr
 
      # Initialize the class
      wq = wifi_2_qr()
@@ -37,7 +37,7 @@ this is the core functionality, a library/API used by the WiFiQR WebApp.
 
    - CLI tool:
      ```shell
-     $ pytho wifi_qr.
+     $ wifiqr_core
      As a MacOS user, you gotta fill in manually...
      WiFi Name: ******
      Hidden Network (yes/no): no
@@ -52,7 +52,7 @@ Install and use on your own projects.
 > Following exmaple shows how to creat an `img.png` containing a QR-Code with your WiFi creditionals.
 
 ```python
-from wifi_qr import wifi_2_qr
+from wifiqr_core import wifi_2_qr
 
 # change this to the desired output image name.
 img_name = "QR_CODE"
@@ -169,10 +169,11 @@ def read_description():
 setup(
     name='wifiqr-core',
 
-    version='0.1',
+    version='1.0',
 
     description='An API to generate a QR-code for your WiFI to let others quickly connect.',
     long_description=read_description(),
+    long_description_content_type="text/markdown",
 
     url='https://github.com/MoElaSec/WiFiQR_Core',
 
@@ -207,15 +208,18 @@ setup(
 
     keywords=['WiFi', 'qrcode', 'pillow'],
 
-    py_modules=['wifiqr-core'],
+    py_modules=['wifiqr_core'],
 
     install_requires=['Pillow', 'qrcode'],
 
     entry_points={
         'console_scripts': [
-            'wifiqr-core=wifi_qr.__main__:main',
+            'wifiqr-core=wifiqr_core:main',
         ]
     },
 
-    test_suite='setup.test_suite'
+    packages=find_packages('src'),
+    package_dir={'': 'src'},
+
+    test_suite='setup.test_suite',
 )
