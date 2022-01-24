@@ -59,7 +59,7 @@ class wifi_2_qr():
 
             # print("Password :", password)
 
-            return set_wifi(ssid, password, auth_type[:3], hidden)
+            return set_wifi(ssid, password, auth_type[:3])
         except:
             return False
 
