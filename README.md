@@ -14,6 +14,11 @@ this is the core functionality, a library/API used by the WiFiQR WebApp.
    ```bash
    pip install wifiqr-core
    ```
+   In case of errors, install the latest ver. from GitHub:
+
+   ```bash
+   pip install git+https://github.com/MoElaSec/WiFiQR_Core.git
+   ```
 
 2. Varouise ways to use:
 
